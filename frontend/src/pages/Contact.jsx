@@ -1,0 +1,4 @@
+function Contact() {
+  return <section className="py-5"><div className="container"><div className="row justify-content-center"><div className="col-lg-8"><div className="card border-0 shadow-sm p-4"><h1 className="fw-bold">Contact EduLearn</h1><p className="text-muted">Have a question about courses or your learning account?</p><form><div className="row g-3"><div className="col-md-6"><label className="form-label fw-semibold">Name</label><input className="form-control" /></div><div className="col-md-6"><label className="form-label fw-semibold">Email</label><input type="email" className="form-control" /></div><div className="col-12"><label className="form-label fw-semibold">Message</label><textarea className="form-control" rows="5"></textarea></div><div className="col-12"><button type="button" className="btn btn-primary">Send Message</button></div></div></form></div></div></div></div></section>;
+}
+export default Contact;
