@@ -15,7 +15,7 @@ function CourseDetails() {
   useEffect(() => {
     const fetchCourse = async () => {
       try {
-        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/courses${courseId}`);
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/courses/${courseId}`);
         const result = await response.json();
         if (!response.ok) throw new Error(result.message || "Course not found.");
         setCourse(result.data);
