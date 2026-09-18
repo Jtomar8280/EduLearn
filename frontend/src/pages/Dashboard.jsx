@@ -18,8 +18,8 @@ function Dashboard() {
       }
       try {
         const [coursesResponse, timeResponse] = await Promise.all([
-          fetch("http://localhost:5000/api/enrollments/my-courses", { headers: { Authorization: `Bearer ${token}` } }),
-          fetch("http://localhost:5000/api/learning/time", { headers: { Authorization: `Bearer ${token}` } }),
+          fetch(`${import.meta.env.VITE_API_URL}/api/enrollments/my-courses`, { headers: { Authorization: `Bearer ${token}` } }),
+          fetch(`${import.meta.env.VITE_API_URL}/api/learning/time`, { headers: { Authorization: `Bearer ${token}` } }),
         ]);
         const coursesResult = await coursesResponse.json();
         const timeResult = await timeResponse.json();

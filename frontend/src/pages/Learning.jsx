@@ -26,8 +26,8 @@ function Learning() {
     const fetchData = async () => {
       try {
         const [lessonsResponse, progressResponse] = await Promise.all([
-          fetch(`http://localhost:5000/api/courses/${courseId}/lessons`),
-          fetch(`http://localhost:5000/api/progress/${courseId}`, { headers: { Authorization: `Bearer ${token}` } }),
+          fetch(`${import.meta.env.VITE_API_URL}/api/courses/${courseId}/lessons`),
+          fetch(`${import.meta.env.VITE_API_URL}/api/progress/${courseId}`, { headers: { Authorization: `Bearer ${token}` } }),
         ]);
         const lessonsResult = await lessonsResponse.json();
         const progressResult = await progressResponse.json();
@@ -60,7 +60,7 @@ function Learning() {
     const currentSessionId = sessionId;
     if (!token || !currentSessionId) return;
     try {
-      await fetch("http://localhost:5000/api/learning/end", {
+      await fetch(`${import.meta.env.VITE_API_URL}/api/learning/end`, {
         method: "POST",
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
         body: JSON.stringify({ session_id: currentSessionId }),
@@ -83,7 +83,7 @@ function Learning() {
       await endSession();
       sessionLessonRef.current = selectedLesson.id;
       try {
-        const response = await fetch("http://localhost:5000/api/learning/start", {
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/learning/start`, {
           method: "POST",
           headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
           body: JSON.stringify({ course_id: selectedLesson.course_id, lesson_id: selectedLesson.id }),
@@ -110,7 +110,7 @@ function Learning() {
     }
     try {
       setCompleting(true);
-      const response = await fetch("http://localhost:5000/api/progress/complete", {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/progress/complete`, {
         method: "POST",
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
         body: JSON.stringify({ course_id: selectedLesson.course_id, lesson_id: selectedLesson.id }),
