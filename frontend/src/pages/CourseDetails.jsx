@@ -34,7 +34,7 @@ function CourseDetails() {
       const token = localStorage.getItem("token");
       if (!token) return;
       try {
-        const response = await fetch("http://localhost:5000/api/enrollments/my-courses", {
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/enrollments/my-courses`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         if (!response.ok) return;
@@ -62,7 +62,7 @@ function CourseDetails() {
     }
     try {
       setEnrolling(true);
-      const response = await fetch("http://localhost:5000/api/enrollments", {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/enrollments`, {
         method: "POST",
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
         body: JSON.stringify({ course_id: course.id }),
