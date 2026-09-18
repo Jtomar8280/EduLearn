@@ -15,7 +15,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: ["http://localhost:5173", "https://edulearn-frontend.onrender.com"],
+    origin: ["http://localhost:5173", "https://edulearn-1okc.onrender.com"],
     credentials: true,
   }),
 );
